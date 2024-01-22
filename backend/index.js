@@ -22,3 +22,15 @@ app.listen(3000,()=>{
 // })
 // app.use('/api/test',testrouter)
 app.use('/api/auth',authRoutes)
+
+//error middleware
+
+app.use((err,req,res,next)=>{
+    const statusCode = err.statusCode||500;
+    const message = err.message||"Internal Server Error";
+    res.status(statusCode).json({
+        sucess:false,
+        statusCode,
+        message,
+    })
+})
