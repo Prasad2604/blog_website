@@ -4,6 +4,7 @@ require('dotenv').config()
 const app = express()
 const testrouter = require('./routes/user.route')
 const authRoutes = require('./routes/auth.route')
+const cookieParser = require('cookie-parser')
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log('Connected to db')
@@ -11,7 +12,8 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log(err);
 });
 
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser());
 
 app.listen(3000,()=>{
     console.log('Server is running on port 3000');
@@ -20,7 +22,7 @@ app.listen(3000,()=>{
 // app.get('/test',(req,res)=>{
 //     res.json({message:"test api is working"});
 // })
-// app.use('/api/test',testrouter)
+app.use('/api/user',testrouter)
 app.use('/api/auth',authRoutes)
 
 //error middleware
