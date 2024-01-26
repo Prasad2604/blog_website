@@ -53,7 +53,7 @@ const signin = async (req,res,next)=>{
             return next(errorHandler(404,'Invalid Password'));
         }
         const token = jwt.sign(
-            {id:user._id},process.env.JWT_SECRET
+            {id:user._id,isAdmin:user.isAdmin},process.env.JWT_SECRET
         );
         
         const {password:pass,...rest} = user._doc;
@@ -73,7 +73,7 @@ const google = async (req,res,next)=>{
     try {
         const user = await User.findOne({email});
         if(user){
-            const token = jwt.sign({id:user._id},process.env.JWT_SECRET);
+            const token = jwt.sign({id:user._id,isAdmin:user.isAdmin},process.env.JWT_SECRET);
             const {password,...rest} = user._doc;
             res.status(200).cookie('access_token',token,{
                 httpOnly:true,
