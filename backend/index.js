@@ -4,6 +4,7 @@ require('dotenv').config()
 const app = express()
 const testrouter = require('./routes/user.route')
 const authRoutes = require('./routes/auth.route')
+const postRoutes = require('./routes/post.route')
 const cookieParser = require('cookie-parser')
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
@@ -24,6 +25,7 @@ app.listen(3000,()=>{
 // })
 app.use('/api/user',testrouter)
 app.use('/api/auth',authRoutes)
+app.use('/api/post',postRoutes)
 
 //error middleware
 
