@@ -60,5 +60,18 @@ const getposts = async (req,res,next) =>{
     }
 }
 
+const deletepost = async (req,res,next)=>{
+    if(!req.user.isAdmin||req.user.id!=req.params.userId){
+        next(errorHandler(400,'User is not authenticated to delete this post'))
+    }
+    // const {postId} = req.query;
+    try {
+        await Post.findByIdAndDelete(req.params.postId);
+        res.status(200).json('The post has been deleted');
+    } catch (error) {
+        next(error);
+    }
+}
 
-module.exports = {create,getposts}
+
+module.exports = {create,getposts,deletepost}
