@@ -79,7 +79,12 @@ const updatepost = async (req,res,next) =>{
     }
     try {
         const updatedPost = await Post.findByIdAndUpdate(req.params.postId,{
-            $set:req.body,
+            $set:{
+                title:req.body.title,
+                category:req.body.category,
+                image:req.body.image,
+                content:req.body.content,
+            },
         },{new:true});
         res.status(200).json(updatedPost);
     } catch (error) {
