@@ -79,10 +79,14 @@ const updateUser = async (req,res,next)=>{
         }   
     }
 
+    const getUsers = async (req,res,next)=>{
+        
+    }
+
 
     
 
 
 
 
-module.exports = {getTest,signup,updateUser,deleteUser,signout}
+module.exports = {getTest,signup,updateUser,deleteUser,signout,getUsers}
