@@ -62,7 +62,7 @@ const getposts = async (req,res,next) =>{
 
 const deletepost = async (req,res,next)=>{
     if(!req.user.isAdmin||req.user.id!=req.params.userId){
-        next(errorHandler(400,'User is not authenticated to delete this post'))
+        return next(errorHandler(400,'User is not authenticated to delete this post'))
     }
     // const {postId} = req.query;
     try {
@@ -73,5 +73,19 @@ const deletepost = async (req,res,next)=>{
     }
 }
 
+const updatepost = async (req,res,next) =>{
+    if(!req.user.isAdmin||req.user.id!=req.params.userId){
+        return next(errorHandler(400,'You are not authorised to update this post'));
+    }
+    try {
+        const updatedPost = await Post.findByIdAndUpdate(req.params.postId,{
+            $set:req.body,
+        },{new:true});
+        res.status(200).json(updatedPost);
+    } catch (error) {
+        next(error);
+    }
+}
 
-module.exports = {create,getposts,deletepost}
+
+module.exports = {create,getposts,deletepost,updatepost}
