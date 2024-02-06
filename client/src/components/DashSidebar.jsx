@@ -51,14 +51,14 @@ export default function DashSidebar() {
                 {
                   currentUser.isAdmin && (
                     <Link to='/dashboard?tab=posts'>
-                      <Sidebar.Item active={tab==='posts'} icon={HiDocumentText}>
+                      <Sidebar.Item active={tab==='posts'} icon={HiDocumentText} as='div'>
                         Posts 
                       </Sidebar.Item>
                     </Link>
                   )
                 }
                 
-                    <Sidebar.Item onClick={handleSignOut} icon={HiArrowSmRight} className='cursor-pointer' as='div'>
+                    <Sidebar.Item onClick={handleSignOut} icon={HiArrowSmRight} className='cursor-pointer'>
                         Sign Out
                     </Sidebar.Item>
             </Sidebar.ItemGroup>
