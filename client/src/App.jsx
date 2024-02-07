@@ -12,6 +12,7 @@ import CreatePost from "./pages/CreatePost"
 import PrivateAdminRoute from "./components/PrivateAdminRoute"
 import UpdatePost from "./pages/UpdatePost"
 import PostPage from "./pages/PostPage"
+import Search from "./pages/Search"
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
       </Route>
       <Route path="/projects" element={<Projects/>}></Route>
       <Route path='/post/:postSlug' element={<PostPage/>}></Route>
+      <Route path='/search' element={<Search/>}></Route>
 
     </Routes>
     <FooterCom></FooterCom>
