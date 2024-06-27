@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Spinner,Button } from 'flowbite-react';
 import PostCard from '../components/PostCard';
+// import CommentSection from '../components/CommentSection';
 // import CallToAction from '../components/CallToAction';
 
 export default function PostPage() {
@@ -83,6 +84,9 @@ if(loading===true) {
         {/* <div className="max-w-4xl mx-auto w-full">
             <CallToAction/>
         </div> */}
+        {/* <CommentSection postId={post && post._id}/> */}
+
+
         <div className="flex flex-col justify-center items-center mb-5">
             <h1>Recent Articles</h1>
             <div className='flex flex-wrap gap-5 mt-5 justify-center'>
@@ -94,6 +98,7 @@ if(loading===true) {
                 }
             </div>
         </div>
+        
     </main>
   )
 }

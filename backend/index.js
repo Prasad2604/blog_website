@@ -7,6 +7,7 @@ const authRoutes = require('./routes/auth.route')
 const postRoutes = require('./routes/post.route')
 const cookieParser = require('cookie-parser')
 
+
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log('Connected to db')
 }).catch((err)=>{
@@ -26,6 +27,7 @@ app.listen(3000,()=>{
 app.use('/api/user',testrouter)
 app.use('/api/auth',authRoutes)
 app.use('/api/post',postRoutes)
+// app.use('/api/comment',commentRoutes)
 
 //error middleware
 
