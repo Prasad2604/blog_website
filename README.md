@@ -15,7 +15,7 @@ The Blog Website project is designed to offer a modern, dynamic platform for pub
 - **Interactive Comments Section:**  
   - Readers can leave comments, fostering community engagement and feedback.
 
-## Traditional Methods vs. Our Approach
+## Traditional Methods vs. My Approach
 
 **Traditional Blogging Methods:**
 
